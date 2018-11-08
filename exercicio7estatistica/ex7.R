@@ -28,7 +28,8 @@ pchisq(qui_quadrado, df = 4, lower.tail = FALSE)
 
 ########## QUESTAO 02 ##########
 
-dados = dados_cia = read.csv('DadosCiaMB.csv', sep = ";")
+
+dados  = read.csv('DadosCiaMB.csv', sep = ";")
 
 attach(dados)
 
@@ -67,7 +68,30 @@ for(i in 1:3) {
 
 pchisq(quiQ2, df = 4, lower.tail = TRUE)
 
+tabela
+
 # H0: Existe dependencia entre as variaveis
 # H1: Nao existe dependencia entre as variaveis
 
 # Como P = 0.04400023 < 0.05, entao, rejeitamos H0, logo, existem evidencias que nao ha dependencia entre as variaveis
+
+######### LETRA C #########
+library(gmodels)
+
+CrossTable(Instrucao,procedencia,chisq=TRUE)
+
+
+###### LETRA D #########
+
+CrossTable(Instrucao,Civil,chisq=TRUE)
+
+###### LETRA E #########
+
+dados$salario <- as.numeric(gsub(",","\\.", dados$salario))
+
+dados$idade <- as.numeric(gsub(",","\\.", dados$idade))
+
+
+cor(dados$salario, dados$idade)
+
+plot(dados$salario, dados$idade)
